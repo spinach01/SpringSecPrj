@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+  <http>
+    <form-login login-page="/joinus/login.htm"/>
+    <intercept-url pattern="/customer/noticeDetail.htm" access="ROLE_USER" />
+    <intercept-url pattern="/customer/noticeReg.htm" access="ROLE_ADMIN" />
+  </http>
+  
+  <authentication-manager>
+    <authentication-provider>
+      <user-service>
+	      <user name="newlec" password="111" authorities="ROLE_USER" />
+	      <user name="dragon" password="111" authorities="ROLE_USER" />
+	      <user name="admin" password="111" authorities="ROLE_ADMIN, ROLE_USER" />
+	    </user-service>
+    </authentication-provider>
+  </authentication-manager>
+
+</beans:beans>
